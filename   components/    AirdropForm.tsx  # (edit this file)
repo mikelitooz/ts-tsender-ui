@@ -1,0 +1,25 @@
+const AirdropForm = () => {
+    const [tokenDetails, setTokenDetails] = useState({ name: '', symbol: '', decimals: 0 });
+
+    const fetchTokenDetails = async () => {
+        try {
+            const response = await fetch('api/token-details');
+            const data = await response.json();
+            const name = data.name as string;
+            const symbol = data.symbol as string;
+            const decimals = data.decimals as number;
+
+            setTokenDetails({ name, symbol, decimals });
+        } catch (error) {
+            console.error('Error fetching token details:', error);
+        }
+    };
+
+    return (
+        <div>
+            {/* Your component JSX here */}
+        </div>
+    );
+};
+
+export default AirdropForm;
